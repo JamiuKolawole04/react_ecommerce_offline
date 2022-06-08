@@ -1,0 +1,71 @@
+.products {
+    width: 100%;
+    grid-template-columns: repeat(auto-fill, minmax(300px ,1fr));
+    margin: 20px 0;
+}
+
+
+/* PRODUCT ITEM
+============================== =====================*/
+@import url("../../../ProductItem/style/productItem.css");
+
+.delete-all {
+    text-align: right;
+    margin: 20px;
+}
+
+.delete-all input {
+    height: 24px;
+    width: 24px;
+    transform: translateY(4px);
+    margin: 0 16px;
+}
+
+.delete-all span {
+    text-transform: uppercase;
+    color: rgb(3, 165, 206);
+    letter-spacing: 1.3px;
+}
+
+.delete-all button {
+    border: 1px solid crimson;
+    padding: 8px 24px;
+    color: crimson;
+    text-transform: uppercase;
+}
+
+/* FILTERS MENU
+=================================================*/
+.filter_menu {
+    width: 100%;
+    min-width: 40px;
+    overflow: hidden;
+    flex-wrap: wrap;
+}
+
+.filter_menu select,
+input {
+  border: 1px solid #ccc;
+  outline: none;
+  height: 40px;
+  padding: 0 4px;
+}
+
+.filter_menu input {
+    flex: 1;
+    margin: 0 8px;
+}
+
+/*
+ LOAD MORE
+=====================================================*/
+.load_more {
+    text-align: center;
+}
+
+.load_more button {
+  padding: 8px 24px;
+  margin-bottom: 20px;
+  border: 1px solid #555;
+  text-transform: capitalize;
+}

@@ -1,0 +1,44 @@
+.categories {
+    max-width: 700px;
+    flex-wrap: wrap;
+    margin: 28px auto;
+}
+
+.categories form {
+    width: 310px;
+    margin-bottom: 20px;
+}
+
+.categories label {
+    display: block;
+    font-weight: 700px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+.categories input,
+button {
+    height: 35px;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #555;
+}
+
+.categories input {
+    width: 210px;
+}
+
+.categories button {
+    width: 70px;
+    background: #555;
+    color: #fff;
+    margin-left: 8px;
+}
+
+.categories .row {
+    min-width: 290px;
+    padding: 8px;
+    margin-bottom: 8px;
+    border: 1px solid #ccc;
+}

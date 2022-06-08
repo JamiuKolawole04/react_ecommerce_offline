@@ -1,0 +1,35 @@
+.d-flex {
+    display: flex;
+}
+
+.justify-content-between {
+    justify-content: space-between;
+}
+
+.justify-content-around {
+    justify-content: space-around;
+}
+
+.align-item-center {
+    align-items: center;
+}
+
+.d-grid {
+    display: grid;
+}
+
+.justify-items-center {
+    justify-items: center;
+}
+
+.ft-600 {
+    font-weight: 600;
+}
+
+
+.sm-justify-content-between {
+    justify-content: space-between;
+}
+
+
+
