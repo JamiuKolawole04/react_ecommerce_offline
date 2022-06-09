@@ -8,19 +8,20 @@ import Cart from '../../asset/icon/cart.svg';
 import axios from "../../utils/axios";
 
 
+
 const Header = () => {
     const state = useContext(GlobalState);
-    const [isLogged, setIsLogged] = state.userAPI.isLogged;
-    const [isAdmin, setIsAdmin] = state.userAPI.isAdmin;
-    const [cart] = state.userAPI.cart;
-    const [menu, setMenu] = useState(false)
+    const [isLogged, setIsLogged] = state.useFetchUser.isLogged;
+    const [isAdmin, setIsAdmin] = state.useFetchUser.isAdmin;
+    const [cart] = state.useFetchUser.cart;
+    const [menu, setMenu] = useState(false);
 
     const logoutUser = async () => {
         await axios({
             method: "get",
             url: "/user/logout"
         });
-        localStorage.removeItem("firstLogin")
+        localStorage.clear();
         setIsAdmin(false);
         setIsLogged(false);
         window.location.href = "/"

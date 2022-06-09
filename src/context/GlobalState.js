@@ -1,45 +1,49 @@
-import React, { createContext, useEffect, useState } from "react";
+import React, { createContext } from "react";
 
-import ProductApi from "../api/ProductApi";
-import axios from "../utils/axios";
-import UserAPI from "../api/UserAPI";
-import CategoriesAPI from "../api/CategoriesAPI";
+import useFetchProduct from "../hooks/useFetchProduct";
+import useCategoryFetch from "../hooks/useFetchCategories";
+import useFetchUser from "../hooks/useFetchUser";
+import API from "../api/ProductApi";
 
 const GlobalState = createContext();
 
 const DataProvider = ({ children }) => {
-    const [token, setToken] = useState(false);
+
+    // const [token, setToken] = useState("");
+
+    const firstLogin = JSON.parse(localStorage.getItem("firstLogin"));
+    let token = localStorage.getItem("token");
 
 
-
-    useEffect(() => {
-        // const firstLogin = localStorage.getItem("firstLogin");
-        const firstLogin = JSON.parse(localStorage.getItem("firstLogin"));
-        console.log(firstLogin);
-
-        if (firstLogin) {
-            const refreshToken = async () => {
-                const { data } = await axios({
-                    method: "get",
-                    url: "/user/refresh_token",
-                    withCredentials: true
-                });
-                setToken(data.accessToken)
-
-            }
-            refreshToken()
+    if (firstLogin) {
+        const fetchToken = async () => {
+            const getToken = await API.rereshToken();
+            return getToken
         }
 
 
-    }, [setToken]);
+        (async () => {
+            let token = await fetchToken();
+            localStorage.setItem("token", token.accessToken)
+        })()
+    }
+
+
 
 
     const state = {
-        token: [token, setToken],
-        ProductAPI: ProductApi(),
-        userAPI: UserAPI(token),
-        categoriesAPI: CategoriesAPI()
+
+        token: [token],
+        ProductAPI: useFetchProduct(),
+        useFetchUser: useFetchUser(token),
+        // userAPI: UserAPI(token),
+        categoriesAPI: useCategoryFetch()
     }
+
+
+
+
+
 
 
     return (

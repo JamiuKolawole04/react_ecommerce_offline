@@ -1,45 +1,46 @@
-import { useState, useEffect } from 'react';
+
 import axios from '../utils/axios';
 
-
-const ProductApi = () => {
-    const [products, setProducts] = useState([]);
-    const [callback, setCallback] = useState(false);
-
-    const [category, setCategory] = useState("");
-    const [search, setSearch] = useState("");
-    const [sort, setSort] = useState("");
-    const [page, setPage] = useState(1);
-    const [result, setResult] = useState(0);
-
-    const getProducts = async () => {
+const apiSettings = {
+    fetchProducts: async (page = 1, category = "", search = "", sort = "") => {
         const { data } = await axios({
             method: "get",
             url: `/api/v1/products?limit=${page * 9}&${category}&${sort}&title[regex]=${search}`
-        })
-        setProducts(data.products);
-        setResult(data.result);
+        });
 
+        return data;
+    },
+
+    fetchCategories: async () => {
+        const { data } = await axios({
+            method: "get",
+            url: "/api/v1/category",
+        });
+        return data;
+    },
+
+    fetchUser: async (token) => {
+        const { data } = await axios({
+            method: "get",
+            url: "/user/info",
+            headers: {
+                Authorization: token
+            }
+        });
+        return data;
+    },
+
+    rereshToken: async () => {
+        const { data } = await axios({
+            method: "get",
+            url: "/user/refresh_token",
+            withCredentials: true
+        });
+        return data
     }
 
 
-    useEffect(() => {
-
-        getProducts()
-    }, [page, category, sort, search]);
-
-
-    return {
-        products: [products, setProducts],
-        callback: [callback, setCallback],
-        category: [category, setCategory],
-        search: [search, setSearch],
-        sort: [sort, setSort],
-        page: [page, setPage],
-        result: [result, setResult]
-    };
 }
 
 
-
-export default ProductApi;
+export default apiSettings

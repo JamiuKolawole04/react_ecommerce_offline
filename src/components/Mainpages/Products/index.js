@@ -13,7 +13,7 @@ const Products = () => {
 
     const state = useContext(GlobalState);
     const [products, setProducts] = state.ProductAPI.products;
-    const [isAdmin] = state.userAPI.isAdmin;
+    const [isAdmin] = state.useFetchUser.isAdmin;
     const [token] = state.token;
     const [callback, setCallback] = state.ProductAPI.callback;
     const [loading, setLoading] = useState(false);

@@ -6,9 +6,9 @@ import axios from "../../../utils/axios"
 
 const History = () => {
     const state = useContext(GlobalState);
-    const [history, setHistory] = state.userAPI.history;
+    const [history, setHistory] = state.useFetchUser.history;
     const [token] = state.token;
-    const [isAdmin] = state.userAPI.isAdmin
+    const [isAdmin] = state.useFetchUser.isAdmin
 
     useEffect(() => {
         if (token) {

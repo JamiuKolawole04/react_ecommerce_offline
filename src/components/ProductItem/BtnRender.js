@@ -4,8 +4,9 @@ import { GlobalState } from '../../context/GlobalState';
 
 const BtnRender = ({ product, deleteProduct }) => {
     const state = useContext(GlobalState);
-    const [isAdmin] = state.userAPI.isAdmin;
-    const addCart = state.userAPI.addCart;
+    const [isAdmin] = state.useFetchUser.isAdmin;
+    const addCart = state.useFetchUser.addCart
+    // const addCart = state.userAPI.addCart;
 
 
     return (

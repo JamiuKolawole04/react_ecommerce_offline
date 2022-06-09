@@ -23,7 +23,7 @@ const CreateProduct = () => {
     const state = useContext(GlobalState);
     const [product, setProduct] = useState(initialState);
     const [categories] = state.categoriesAPI.categories;
-    const [isAdmin] = state.userAPI.isAdmin;
+    const [isAdmin] = state.useFetchUser.isAdmin;
     const [callback, setCallback] = state.ProductAPI.callback;
     const [products] = state.ProductAPI.products
     const [token] = state.token;

@@ -7,7 +7,7 @@ import { GlobalState } from "../../../context/GlobalState";
 const DetailProduct = () => {
     const params = useParams();
     const state = useContext(GlobalState);
-    const addCart = state.userAPI.addCart
+    const addCart = state.useFetchUser.addCart
     const [products] = state.ProductAPI.products
     const [detailProducts, setDetailProducts] = useState([]);
 

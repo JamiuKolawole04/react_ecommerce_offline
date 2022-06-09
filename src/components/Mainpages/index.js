@@ -15,21 +15,23 @@ import CreateProduct from './CreateProduct';
 
 const Mainpages = () => {
     const state = useContext(GlobalState);
-    const [isLoggged] = state.userAPI.isLogged;
-    const [isAdmin] = state.userAPI.isAdmin;
+    const [isLogged, isAdmin] = state.useFetchUser.isLogged;
+
+
+
     return (
         <Routes>
             <Route path="/" element={<Products />} />
             <Route path="/detail/:id" element={<DetailProduct />} />
 
-            <Route path="/login" element={isLoggged ? <NotFound /> : <Login />} />
+            <Route path="/login" element={isLogged ? <NotFound /> : <Login />} />
             <Route path="/cart" element={<Cart />} />
-            <Route path="/register" element={isLoggged ? <NotFound /> : <Register />} />
-            <Route path="/history" element={isLoggged ? <History /> : <NotFound />} />
-            <Route path="/history/:id" element={isLoggged ? <OrderDetails /> : <NotFound />} />
-            <Route path="/category" element={isLoggged && isAdmin ? <Categories /> : <NotFound />} />
-            <Route path="/create_product" element={isLoggged && isAdmin ? <CreateProduct /> : <NotFound />} />
-            <Route path="/edit_product/:id" element={isLoggged && isAdmin ? <CreateProduct /> : <NotFound />} />
+            <Route path="/register" element={isLogged ? <NotFound /> : <Register />} />
+            <Route path="/history" element={isLogged ? <History /> : <NotFound />} />
+            <Route path="/history/:id" element={isLogged ? <OrderDetails /> : <NotFound />} />
+            <Route path="/category" element={isLogged && isAdmin ? <Categories /> : <NotFound />} />
+            <Route path="/create_product" element={isLogged && isAdmin ? <CreateProduct /> : <NotFound />} />
+            <Route path="/edit_product/:id" element={isLogged && isAdmin ? <CreateProduct /> : <NotFound />} />
 
 
             <Route path="*" element={<NotFound />} />

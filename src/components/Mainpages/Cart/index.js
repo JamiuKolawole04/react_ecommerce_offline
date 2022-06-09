@@ -6,10 +6,10 @@ import PaypalButton from "./PaypalButton";
 
 const Cart = () => {
     const state = useContext(GlobalState);
-    const [cart, setCart] = state.userAPI.cart;
+    const [cart, setCart] = state.useFetchUser.cart;
     const [token] = state.token
     const [total, setTotal] = useState(0);
-    const [callback, setCallback] = state.userAPI.callback
+    const [callback, setCallback] = state.useFetchUser.callback
 
     useEffect(() => {
         const getTotal = () => {
